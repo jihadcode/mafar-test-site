@@ -1,0 +1,216 @@
+<!--
+  FILE MAP — index.html (public homepage)
+  Uses:  /css/home.css, /css/navbar.css   ← navbar.css is shared by every public page
+  JS:    /js/home.js     ← loads homepage stats + the "Latest Updates" preview
+         /js/navbar.js   ← shared site header/navigation (see that file to edit the nav)
+
+  NOTE: This page is deliberately an OVERVIEW/landing page, not the full
+  Knowledge Corner experience — that now lives on its own dedicated page,
+  knowledge-corner.html, so Home and Knowledge Corner look and feel
+  distinctly different from each other.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAFAR-LDS Portal</title>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<div id="site-header"></div>
+<script src="/js/navbar.js"></script>
+
+<div class="hero">
+  <h1>Ministry of Agriculture, Fisheries<br>and Agrarian Reform &mdash; Lanao del Sur</h1>
+  <p>Serving farmers, fisherfolk, and agrarian reform beneficiaries across Lanao del Sur
+     through registry management, extension programs, and community support.</p>
+</div>
+
+<div class="section officials-slider-section">
+  <h2>Leadership</h2>
+  <div class="officials-slider" id="officialsSlider">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide">
+        <img src="/images/officials/macacua.jpg" alt="Abdulraof A. Macacua" loading="lazy">
+        <div class="slide-caption">
+          <h3>Abdulraof A. Macacua</h3>
+          <p>Office of the Chief Minister</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="/images/officials/hassan.jpg" alt="Hatimil E. Hassan" loading="lazy">
+        <div class="slide-caption">
+          <h3>Hatimil E. Hassan</h3>
+          <p>Office of the Deputy Chief Minister &ndash; Island Provinces</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="/images/officials/solaiman.jpg" alt="Ali B. Solaiman" loading="lazy">
+        <div class="slide-caption">
+          <h3>Ali B. Solaiman</h3>
+          <p>Office of the Deputy Chief Minister &ndash; Mainland Provinces</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="/images/officials/ansano.jpg" alt="Atty. Khalid D. Ansano" loading="lazy">
+        <div class="slide-caption">
+          <h3>Atty. Khalid D. Ansano</h3>
+          <p>Provincial Director, Lanao del Sur</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Previous">&#10094;</button>
+    <button class="slider-arrow slider-next" id="sliderNext" aria-label="Next">&#10095;</button>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+</div>
+
+<div class="section intro-section">
+  <div class="intro-grid">
+    <div class="intro-text">
+      <h2>Welcome to MAFAR-LDS</h2>
+      <p>The Ministry of Agriculture, Fisheries, and Agrarian Reform &ndash; Lanao del Sur
+         (MAFAR-LDS) is the office of the Bangsamoro Autonomous Region in Muslim Mindanao
+         responsible for agricultural development, fisheries support, and agrarian reform
+         services across the province. This portal is where the public can learn about our
+         programs and leadership, and where our staff manage client and program records.</p>
+      <a href="/about.html" class="text-link">Learn more about MAFAR-LDS &rarr;</a>
+    </div>
+    <div class="intro-stats" id="introStats">
+      <div class="stat-box"><div class="stat-box-value">&hellip;</div><div class="stat-box-label">Registered Clients</div></div>
+      <div class="stat-box"><div class="stat-box-value">&hellip;</div><div class="stat-box-label">Municipalities Covered</div></div>
+      <div class="stat-box"><div class="stat-box-value">&hellip;</div><div class="stat-box-label">Programs</div></div>
+      <div class="stat-box"><div class="stat-box-value">&hellip;</div><div class="stat-box-label">Ongoing Projects</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section explore-section">
+  <h2>Explore the Site</h2>
+  <p class="lede">Everything MAFAR-LDS offers, in one place.</p>
+  <div class="explore-grid">
+    <a href="/about.html" class="explore-card">
+      <div class="explore-icon">&#127963;&#65039;</div>
+      <h3>About Us</h3>
+      <p>Our vision, mission, mandate, and organizational structure.</p>
+    </a>
+    <a href="/officials.html" class="explore-card">
+      <div class="explore-icon">&#128100;</div>
+      <h3>Officials</h3>
+      <p>Meet MAFAR-LDS and BARMM leadership.</p>
+    </a>
+    <a href="/programs.html" class="explore-card">
+      <div class="explore-icon">&#127806;</div>
+      <h3>Programs</h3>
+      <p>Flagship programs (BInHI, LUPA, ISDA) and sectoral programs we implement.</p>
+    </a>
+    <a href="/news.html" class="explore-card">
+      <div class="explore-icon">&#128240;</div>
+      <h3>News</h3>
+      <p>Regional and provincial news, and national program updates.</p>
+    </a>
+    <a href="/knowledge-corner.html" class="explore-card">
+      <div class="explore-icon">&#128218;</div>
+      <h3>Knowledge Corner</h3>
+      <p>Publications, infographics, radio programs, and more.</p>
+    </a>
+    <a href="/transparency.html" class="explore-card">
+      <div class="explore-icon">&#128203;</div>
+      <h3>Transparency</h3>
+      <p>Transparency Seal, Citizen's Charter, procurement, and vacant positions.</p>
+    </a>
+    <a href="/downloads.html" class="explore-card">
+      <div class="explore-icon">&#128190;</div>
+      <h3>Downloads</h3>
+      <p>Application forms, including the RSBSA form.</p>
+    </a>
+    <a href="/faqs.html" class="explore-card">
+      <div class="explore-icon">&#10067;</div>
+      <h3>FAQs</h3>
+      <p>Common questions about the portal and our services.</p>
+    </a>
+  </div>
+</div>
+
+<div class="section updates-section">
+  <div class="updates-header">
+    <div>
+      <h2>Latest Updates</h2>
+      <p class="lede">Recent posts from the Knowledge Corner.</p>
+    </div>
+    <a href="/knowledge-corner.html" class="text-link">View All &rarr;</a>
+  </div>
+  <div class="news-grid" id="latestUpdatesGrid">
+    <p class="lede">Loading&hellip;</p>
+  </div>
+</div>
+
+<!--
+  Ministry/Agency link note: subdomains follow the BARMM government's
+  established pattern of {ministry-abbreviation}.bangsamoro.gov.ph
+  (confirmed for MAFAR, MHSD, MIPA, MILG, MOST, and MTIT via live search).
+  The remaining ministry links follow that same confirmed pattern.
+  Agency links point to the main bangsamoro.gov.ph portal since individual
+  agency subdomains weren't independently verified — update them if/when
+  you confirm each agency's own site.
+-->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col footer-seal-col">
+      <img src="/images/barmm-seal.png" alt="BARMM Seal" class="footer-seal">
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-heading">Republic of the Philippines</div>
+      <div class="footer-heading">Bangsamoro Autonomous Region in Muslim Mindanao</div>
+      <p class="footer-note">All content is in the public domain unless otherwise stated.</p>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-heading">Ministry Links</div>
+      <a href="https://mafar.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Agriculture, Fisheries, and Agrarian Reform</a>
+      <a href="https://mbhte.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Basic, Higher and Technical Education</a>
+      <a href="https://menre.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Environment, Natural Resources and Energy</a>
+      <a href="https://mfbm.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Finance, Budget and Management</a>
+      <a href="https://moh.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Health</a>
+      <a href="https://mhsd.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Human Settlements &amp; Development</a>
+      <a href="https://mipa.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Indigenous Peoples' Affairs</a>
+      <a href="https://mole.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Labor and Employment</a>
+      <a href="https://milg.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of the Interior and Local Government</a>
+      <a href="https://mpos.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Public Order and Safety</a>
+      <a href="https://mpw.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Public Works</a>
+      <a href="https://most.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Science and Technology</a>
+      <a href="https://mssd.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Social Services and Development</a>
+      <a href="https://mtit.bangsamoro.gov.ph/" target="_blank" rel="noopener">Ministry of Trade, Investment and Tourism</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-heading">Agency Links</div>
+      <a href="https://bangsamoro.gov.ph/officials/" target="_blank" rel="noopener">Bangsamoro Parliament</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Commission for the Preservation of Cultural Heritage</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Darul-Ifta'</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Human Rights Commission</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Information and Communications Technology Office</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Planning and Development Authority</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Ports Management Authority</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Women Commission</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Youth Commission</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Sports Commission</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Development Academy of the Bangsamoro</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Cooperative and Social Enterprise Authority</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Pilgrimage Authority</a>
+      <a href="https://bangsamoro.gov.ph/" target="_blank" rel="noopener">Bangsamoro Information Office</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2026 MAFAR&#8209;LDS Portal &middot; Internal registry system &middot; Built for demonstration purposes
+  </div>
+</footer>
+
+<script src="/js/home.js"></script>
+</body>
+</html>

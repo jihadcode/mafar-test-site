@@ -1,0 +1,288 @@
+/* navbar.css — shared by EVERY public page via <div id="site-header"></div>
+   Theme: colors are drawn from the official BARMM flag/seal — green
+   (Islamic teachings & principles), golden-yellow crescent & star
+   (bright future), white (peace). */
+
+:root {
+  --nav-green: #0d5c3a;
+  --nav-green-dark: #063d26;
+  --nav-gold: #d4af37;
+  --nav-ink: #24291f;
+  --nav-muted: #6d7266;
+  --nav-border: #e2e6d8;
+}
+
+.brand-ribbon {
+  height: 5px;
+  width: 100%;
+  background: var(--nav-gold);
+}
+
+/* ---------- Top banner (seal + Republic/BARMM/Ministry text) ---------- */
+.mafar-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 32px;
+  background: linear-gradient(90deg, var(--nav-green-dark), var(--nav-green) 50%, var(--nav-green-dark));
+  color: #fff;
+}
+.banner-seal {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #fff;
+}
+.banner-text { flex: 1; min-width: 0; }
+.banner-line-1 {
+  font-size: 0.82rem;
+  color: #e6f0ea;
+  line-height: 1.4;
+}
+.banner-line-2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #f2cf4a;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ---------- Desktop mega nav ---------- */
+.mega-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 1px solid var(--nav-border);
+  padding: 0 24px;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.nav-item { position: relative; }
+.nav-item > a {
+  display: block;
+  padding: 16px 14px;
+  color: var(--nav-ink);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.nav-item > a:hover, .nav-item > a.active { color: var(--nav-green); }
+.nav-item .caret { font-size: 0.65rem; margin-left: 2px; }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid var(--nav-border);
+  border-top: 3px solid var(--nav-green);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  min-width: 260px;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  z-index: 200;
+}
+.nav-item.has-dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--nav-ink);
+  text-decoration: none;
+  font-size: 0.88rem;
+  white-space: normal;
+}
+.dropdown-menu li a:hover { background: #f2f7f3; color: var(--nav-green); }
+
+.nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+.nav-register {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: var(--nav-green);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-register:hover { background: var(--nav-green-dark); }
+
+.nav-login { flex-shrink: 0; padding: 10px 0; }
+.nav-login .btn.secondary {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: 1px solid var(--nav-green);
+  color: var(--nav-green);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.nav-login .btn.secondary:hover { background: var(--nav-green); color: #fff; }
+
+.nav-search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 8px;
+  color: var(--nav-ink);
+}
+.nav-search-btn:hover { color: var(--nav-green); }
+
+.nav-search-bar {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #f7f4ec;
+  border-bottom: 1px solid var(--nav-border);
+}
+.nav-search-bar.open { display: flex; }
+.nav-search-bar input {
+  flex: 1;
+  max-width: 480px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--nav-border);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+.nav-search-bar button {
+  padding: 9px 18px;
+  border-radius: 6px;
+  border: none;
+  background: var(--nav-green);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.88rem;
+}
+
+.mnav-search { padding: 14px 20px; border-bottom: 1px solid var(--nav-border); }
+.mnav-search input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--nav-border);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+/* ---------- Mobile slide-out menu ---------- */
+.mobile-menu-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 290;
+}
+.mobile-menu-backdrop.open { display: block; }
+
+.mobile-menu-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 320px;
+  max-width: 88vw;
+  background: #fff;
+  z-index: 300;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  overflow-y: auto;
+}
+.mobile-menu-panel.open { transform: translateX(0); }
+
+.mnav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--nav-green);
+  color: #fff;
+  padding: 16px 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.mnav-close {
+  background: #fff;
+  color: var(--nav-green);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.mnav-body { padding: 4px 0; }
+.mnav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--nav-border);
+}
+.mnav-label {
+  color: var(--nav-ink);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.mnav-row a.mnav-label:hover, .mnav-row a.mnav-label:first-child:hover { color: var(--nav-green); }
+.mnav-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--nav-muted);
+  cursor: pointer;
+  width: 26px;
+}
+.mnav-submenu {
+  display: none;
+  flex-direction: column;
+  background: #fafaf7;
+  border-bottom: 1px solid var(--nav-border);
+}
+.mnav-submenu.open { display: flex; }
+.mnav-submenu a {
+  padding: 12px 32px;
+  color: var(--nav-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  border-top: 1px solid var(--nav-border);
+}
+.mnav-submenu a:hover { color: var(--nav-green); }
+
+/* ---------- Responsive breakpoint ---------- */
+@media (max-width: 900px) {
+  .mega-nav { display: none; }
+  .hamburger-btn { display: block; }
+  .mafar-banner { padding: 12px 16px; gap: 12px; }
+  .banner-seal { width: 46px; height: 46px; }
+  .banner-line-1 { font-size: 0.72rem; }
+  .banner-line-2 { font-size: 1rem; }
+}

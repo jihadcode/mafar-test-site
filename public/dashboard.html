@@ -1,0 +1,686 @@
+<!--
+  FILE MAP — dashboard.html
+  Uses:  /css/dashboard.css  ← dedicated to this page only
+  JS:    /js/dashboard.js → all data loading, view switching, and modal logic
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard &middot; MAFAR-LDS Portal</title>
+<link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+<div class="brand-ribbon"></div>
+
+<div class="mobile-topbar">
+  <button id="sidebarToggle" class="hamburger-btn" aria-label="Open menu">&#9776;</button>
+  <div class="mobile-topbar-title">MAFAR-LDS Registry</div>
+</div>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="app-shell">
+
+  <div class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="seal"><img src="/images/mafar-seal.png" alt="MAFAR-LDS Seal"></span>
+      <div class="brand-text">
+        <div class="title">MAFAR-LDS<br>Registry</div>
+        <div class="sub">BARMM &middot; Lanao del Sur</div>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Overview</div>
+      <a href="#" data-view="dashboard" class="nav-link active"><span class="icon-dot"></span> Dashboard</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Registry</div>
+      <a href="#" data-view="registry" class="nav-link"><span class="icon-dot"></span> Clients</a>
+      <a href="#" data-view="programs" class="nav-link"><span class="icon-dot"></span> Programs</a>
+      <a href="#" data-view="projects" class="nav-link"><span class="icon-dot"></span> Projects</a>
+    </div>
+
+    <div class="nav-group" id="contentNavGroup" style="display:none;">
+      <div class="nav-label">Content</div>
+      <a href="#" data-view="news" class="nav-link"><span class="icon-dot"></span> News &amp; Announcements</a>
+      <a href="#" data-view="resources" class="nav-link"><span class="icon-dot"></span> Issuances &amp; Downloads</a>
+      <a href="#" data-view="faqs" class="nav-link"><span class="icon-dot"></span> FAQs</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Output</div>
+      <a href="#" data-view="reports" class="nav-link"><span class="icon-dot"></span> Reports</a>
+    </div>
+
+    <div class="nav-group" id="adminNavGroup" style="display:none;">
+      <div class="nav-label">Administration</div>
+      <a href="#" data-view="users" class="nav-link"><span class="icon-dot"></span> Manage Users</a>
+    </div>
+
+    <div class="sidebar-spacer"></div>
+
+    <div class="sidebar-profile">
+      <div class="avatar" id="profileAvatar">?</div>
+      <div class="who">
+        <div class="name" id="profileName">&nbsp;</div>
+        <div class="role" id="profileRole">&nbsp;</div>
+      </div>
+      <a href="#" id="logoutLink" class="logout">Log out</a>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- ===================== DASHBOARD (OVERVIEW) VIEW ===================== -->
+    <div id="dashboardView">
+      <div class="page-header">
+        <div>
+          <h1 class="serif">Dashboard</h1>
+          <div class="lede">A quick overview of clients, programs, and projects</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Clients</div>
+          <div class="stat-value" id="statClients">0</div>
+          <div class="stat-sub">Farmers, fisherfolk &amp; ARBs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active Programs</div>
+          <div class="stat-value" id="statPrograms">0</div>
+          <div class="stat-sub" id="statProgramsSub">&nbsp;</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Ongoing Projects</div>
+          <div class="stat-value" id="statProjects">0</div>
+          <div class="stat-sub" id="statProjectsSub">&nbsp;</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Project Budget</div>
+          <div class="stat-value" id="statBudget">&#8369;0</div>
+          <div class="stat-sub" id="statBeneficiaries">&nbsp;</div>
+        </div>
+      </div>
+
+      <div class="breakdown-grid">
+        <div class="breakdown-card">
+          <h3>Clients by Type</h3>
+          <div id="clientsByTypeChart"></div>
+        </div>
+        <div class="breakdown-card">
+          <h3>Clients by Municipality</h3>
+          <div id="clientsByMuniChart"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== REGISTRY VIEW ===================== -->
+    <div id="registryView" style="display:none;">
+      <div class="page-header">
+        <div>
+          <h1 class="serif">Client Registry</h1>
+          <div class="lede">Farmers &middot; Fisherfolk &middot; Agrarian Reform Beneficiaries</div>
+        </div>
+        <div class="search-add-row">
+          <input type="text" id="clientSearch" class="search-input" placeholder="Search name or barangay...">
+          <button class="btn" id="openAddClient">+ Add Client</button>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <div class="tabs" id="clientTabs">
+          <button class="active" data-type="All">All</button>
+          <button data-type="Farmer">Farmer</button>
+          <button data-type="Fisherfolk">Fisherfolk</button>
+          <button data-type="ARB">ARB</button>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Client</th><th>Type</th><th>Sex</th><th>Municipality / Brgy.</th><th>Key Detail</th><th>Contact</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="clientsTbody"></tbody>
+      </table>
+      <div class="empty-state" id="clientsEmpty" style="display:none;">No clients found.</div>
+    </div>
+
+    <!-- ===================== PROGRAMS VIEW ===================== -->
+    <div id="programsView" style="display:none;">
+      <div class="page-header">
+        <div>
+          <h1 class="serif">Programs</h1>
+          <div class="lede">Sectoral and cross-cutting programs managed by MAFAR-LDS</div>
+        </div>
+        <button class="btn" id="openAddProgram">+ Add Program</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Program</th><th>Funding Source</th><th>Coverage Area</th><th>Linked Projects</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody id="programsTbody"></tbody>
+      </table>
+      <div class="empty-state" id="programsEmpty" style="display:none;">No programs yet.</div>
+    </div>
+
+    <!-- ===================== PROJECTS VIEW ===================== -->
+    <div id="projectsView" style="display:none;">
+      <div class="page-header">
+        <div>
+          <h1 class="serif">Projects</h1>
+          <div class="lede">Individual projects implemented under each program</div>
+        </div>
+        <button class="btn" id="openAddProject">+ Add Project</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Project</th><th>Program</th><th>Location</th><th>Budget</th><th>Beneficiaries</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody id="projectsTbody"></tbody>
+      </table>
+      <div class="empty-state" id="projectsEmpty" style="display:none;">No projects yet.</div>
+    </div>
+
+    <!-- ===================== REPORTS VIEW ===================== -->
+    <div id="reportsView" style="display:none;">
+      <div class="page-header">
+        <div>
+          <h1 class="serif">Reports</h1>
+          <div class="lede">Summary figures and downloadable data exports</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">Farmers</div>
+          <div class="stat-value" id="rClientsFarmer">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Fisherfolk</div>
+          <div class="stat-value" id="rClientsFisherfolk">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">ARBs</div>
+          <div class="stat-value" id="rClientsArb">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Beneficiaries Reached (Projects)</div>
+          <div class="stat-value" id="rBeneficiaries">0</div>
+        </div>
+      </div>
+
+      <div class="breakdown-card" style="margin-bottom:20px;">
+        <h3>Programs by Status</h3>
+        <div id="programsByStatusChart"></div>
+      </div>
+
+      <div class="breakdown-card">
+        <h3>Download Data (CSV)</h3>
+        <p class="lede" style="margin-bottom:16px;">Export the current tables to a spreadsheet-friendly CSV file.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn secondary" href="/api/reports/export/clients">Export Clients</a>
+          <a class="btn secondary" href="/api/reports/export/programs">Export Programs</a>
+          <a class="btn secondary" href="/api/reports/export/projects">Export Projects</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== NEWS & ANNOUNCEMENTS VIEW (admin only) ===================== -->
+    <div id="newsView" style="display:none;">
+      <div class="page-header">
+        <div>
+          <h1 class="serif">News &amp; Announcements</h1>
+          <div class="lede">Posts shown in the "News and Information" section of the public homepage</div>
+        </div>
+        <button class="btn" id="openAddNews">+ Add News Post</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Title</th><th>Section</th><th>Category</th><th>Date</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody id="newsTbody"></tbody>
+      </table>
+      <div class="empty-state" id="newsEmpty" style="display:none;">No news posts yet.</div>
+    </div>
+
+    <!-- ===================== ISSUANCES & DOWNLOADS VIEW (admin only) ===================== -->
+    <div id="resourcesView" style="display:none;">
+      <div class="page-header">
+        <div>
+          <h1 class="serif">Issuances &amp; Downloads</h1>
+          <div class="lede">Manages the public Issuances, Downloads, and Transparency (Procurement/Vacant Position) pages</div>
+        </div>
+        <button class="btn" id="openAddResource">+ Add Item</button>
+      </div>
+
+      <div class="tabs" id="resourceSectionTabs">
+        <button class="active" data-section="Issuances">Issuances</button>
+        <button data-section="Downloads">Downloads</button>
+        <button data-section="Transparency">Transparency</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody id="resourcesTbody"></tbody>
+      </table>
+      <div class="empty-state" id="resourcesEmpty" style="display:none;">Nothing here yet.</div>
+    </div>
+
+    <!-- ===================== FAQS VIEW (admin only) ===================== -->
+    <div id="faqsView" style="display:none;">
+      <div class="page-header">
+        <div>
+          <h1 class="serif">FAQs</h1>
+          <div class="lede">Questions and answers shown on the public FAQs page</div>
+        </div>
+        <button class="btn" id="openAddFaq">+ Add FAQ</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Question</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody id="faqsTbody"></tbody>
+      </table>
+      <div class="empty-state" id="faqsEmpty" style="display:none;">No FAQs yet.</div>
+    </div>
+
+    <!-- ===================== MANAGE USERS VIEW (admin only) ===================== -->
+    <div id="usersView" style="display:none;">
+      <div class="page-header">
+        <div>
+          <h1 class="serif">Manage Users</h1>
+          <div class="lede">Staff accounts registered on this portal</div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Username</th><th>Email</th><th>Position</th><th>Role</th><th></th></tr>
+        </thead>
+        <tbody id="usersTbody"></tbody>
+      </table>
+      <div class="empty-state" id="usersEmpty" style="display:none;">No users found.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== ADD/EDIT CLIENT MODAL ===================== -->
+<div class="modal-backdrop" id="clientModalBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="clientModalTitle">Add Client Record</h2>
+      <button class="close-x" data-close="clientModalBackdrop">&times;</button>
+    </div>
+    <form id="clientForm">
+      <input type="hidden" id="clientId">
+      <div class="form-grid">
+        <div class="field">
+          <label>Type</label>
+          <select id="c_type">
+            <option>Farmer</option>
+            <option>Fisherfolk</option>
+            <option>ARB</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Sex</label>
+          <select id="c_sex">
+            <option>Female</option>
+            <option>Male</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Full Name</label>
+          <input type="text" id="c_name" placeholder="e.g. Amina Macarambon" required>
+        </div>
+        <div class="field">
+          <label>Contact No.</label>
+          <input type="text" id="c_contact" placeholder="09xxxxxxxxx">
+        </div>
+        <div class="field">
+          <label>Municipality</label>
+          <input type="text" id="c_municipality" placeholder="e.g. Marawi City" required>
+        </div>
+        <div class="field">
+          <label>Barangay</label>
+          <input type="text" id="c_barangay" placeholder="e.g. Poblacion">
+        </div>
+        <div class="field full">
+          <label>Key Detail</label>
+          <input type="text" id="c_keyDetail" placeholder="e.g. Rice, 1.5 ha · Owner-cultivator">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn secondary" data-close="clientModalBackdrop">Cancel</button>
+        <button type="submit" class="btn">Save Record</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== ADD/EDIT PROGRAM MODAL ===================== -->
+<div class="modal-backdrop" id="programModalBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="programModalTitle">Add Program</h2>
+      <button class="close-x" data-close="programModalBackdrop">&times;</button>
+    </div>
+    <form id="programForm">
+      <input type="hidden" id="programId">
+      <div class="form-grid">
+        <div class="field full">
+          <label>Program Name</label>
+          <input type="text" id="p_name" placeholder="e.g. Support to Women ARBs (SWARB)" required>
+        </div>
+        <div class="field full">
+          <label>Description</label>
+          <textarea id="p_description" rows="3" placeholder="Short description of the program's objective and target sector"></textarea>
+        </div>
+        <div class="field">
+          <label>Funding Source</label>
+          <input type="text" id="p_fundingSource" placeholder="e.g. GAD Fund / National Budget" required>
+        </div>
+        <div class="field">
+          <label>Coverage Area</label>
+          <input type="text" id="p_coverageArea" placeholder="e.g. Province-wide" required>
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select id="p_status">
+            <option>Active</option>
+            <option>Pending</option>
+            <option>Closed</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn secondary" data-close="programModalBackdrop">Cancel</button>
+        <button type="submit" class="btn">Save Program</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== ADD/EDIT PROJECT MODAL ===================== -->
+<div class="modal-backdrop" id="projectModalBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="projectModalTitle">Add Project</h2>
+      <button class="close-x" data-close="projectModalBackdrop">&times;</button>
+    </div>
+    <form id="projectForm">
+      <input type="hidden" id="projectId">
+      <div class="form-grid">
+        <div class="field full">
+          <label>Project Name</label>
+          <input type="text" id="pr_name" placeholder="e.g. Rice Farmer Field School Batch 3" required>
+        </div>
+        <div class="field full">
+          <label>Linked Program</label>
+          <select id="pr_programId" required></select>
+        </div>
+        <div class="field">
+          <label>Location</label>
+          <input type="text" id="pr_location" placeholder="e.g. 8 Municipalities">
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select id="pr_status">
+            <option>Planning</option>
+            <option>Ongoing</option>
+            <option>Completed</option>
+            <option>On Hold</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Budget (PHP)</label>
+          <input type="number" id="pr_budget" placeholder="e.g. 2500000" min="0" step="1000">
+        </div>
+        <div class="field">
+          <label>Beneficiaries</label>
+          <input type="number" id="pr_beneficiaries" placeholder="e.g. 320" min="0">
+        </div>
+        <div class="field">
+          <label>Start Date</label>
+          <input type="date" id="pr_startDate">
+        </div>
+        <div class="field">
+          <label>End Date</label>
+          <input type="date" id="pr_endDate">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn secondary" data-close="projectModalBackdrop">Cancel</button>
+        <button type="submit" class="btn">Save Project</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== ADD/EDIT NEWS MODAL (admin only) ===================== -->
+<div class="modal-backdrop" id="newsModalBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="newsModalTitle">Add News Post</h2>
+      <button class="close-x" data-close="newsModalBackdrop">&times;</button>
+    </div>
+    <form id="newsForm">
+      <input type="hidden" id="newsId">
+      <div class="form-grid">
+        <div class="field full">
+          <label>Title</label>
+          <input type="text" id="n_title" placeholder="e.g. MAFAR-LDS Launches Farm Field School Enrollment" required>
+        </div>
+        <div class="field full">
+          <label>Body</label>
+          <textarea id="n_body" rows="5" placeholder="Write the announcement text here..." required></textarea>
+        </div>
+        <div class="field">
+          <label>Section</label>
+          <select id="n_section">
+            <option value="KnowledgeCorner">Knowledge Corner (homepage)</option>
+            <option value="News">News (Regional/Provincial/Projects)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Category</label>
+          <select id="n_category"></select>
+        </div>
+        <div class="field">
+          <label>Date</label>
+          <input type="date" id="n_date">
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select id="n_status">
+            <option>Published</option>
+            <option>Draft</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>YouTube Video URL (optional)</label>
+          <input type="url" id="n_youtube" placeholder="e.g. https://www.youtube.com/watch?v=...">
+        </div>
+        <div class="field full">
+          <label>Facebook Post/Video URL (optional)</label>
+          <input type="url" id="n_facebook" placeholder="e.g. https://www.facebook.com/watch/?v=...">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn secondary" data-close="newsModalBackdrop">Cancel</button>
+        <button type="submit" class="btn">Save Post</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== ADD/EDIT RESOURCE MODAL (admin only) ===================== -->
+<div class="modal-backdrop" id="resourceModalBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="resourceModalTitle">Add Item</h2>
+      <button class="close-x" data-close="resourceModalBackdrop">&times;</button>
+    </div>
+    <form id="resourceForm">
+      <input type="hidden" id="resourceId">
+      <div class="form-grid">
+        <div class="field full">
+          <label>Title</label>
+          <input type="text" id="r_title" placeholder="e.g. Memorandum Order No. 2026-05" required>
+        </div>
+        <div class="field full">
+          <label>Description (optional)</label>
+          <textarea id="r_description" rows="3"></textarea>
+        </div>
+        <div class="field">
+          <label>Section</label>
+          <select id="r_section">
+            <option value="Issuances">Issuances</option>
+            <option value="Downloads">Downloads</option>
+            <option value="Transparency">Transparency</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Category</label>
+          <select id="r_category"></select>
+        </div>
+        <div class="field">
+          <label>Date</label>
+          <input type="date" id="r_date">
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select id="r_status">
+            <option>Published</option>
+            <option>Draft</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>File / Link URL (optional)</label>
+          <input type="url" id="r_fileUrl" placeholder="e.g. https://drive.google.com/... or a link to the uploaded PDF">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn secondary" data-close="resourceModalBackdrop">Cancel</button>
+        <button type="submit" class="btn">Save Item</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== ADD/EDIT FAQ MODAL (admin only) ===================== -->
+<div class="modal-backdrop" id="faqModalBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="faqModalTitle">Add FAQ</h2>
+      <button class="close-x" data-close="faqModalBackdrop">&times;</button>
+    </div>
+    <form id="faqForm">
+      <input type="hidden" id="faqId">
+      <div class="form-grid">
+        <div class="field full">
+          <label>Question</label>
+          <input type="text" id="f_question" required>
+        </div>
+        <div class="field full">
+          <label>Answer</label>
+          <textarea id="f_answer" rows="4" required></textarea>
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select id="f_status">
+            <option>Published</option>
+            <option>Draft</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn secondary" data-close="faqModalBackdrop">Cancel</button>
+        <button type="submit" class="btn">Save FAQ</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== EDIT USER MODAL (admin only) ===================== -->
+<div class="modal-backdrop" id="userModalBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Edit User</h2>
+      <button class="close-x" data-close="userModalBackdrop">&times;</button>
+    </div>
+    <form id="userForm">
+      <input type="hidden" id="userId">
+      <div class="form-grid">
+        <div class="field full">
+          <label>Full Name</label>
+          <input type="text" id="u_fullName" required>
+        </div>
+        <div class="field">
+          <label>Position / Job Title</label>
+          <input type="text" id="u_position">
+        </div>
+        <div class="field">
+          <label>Role</label>
+          <select id="u_role">
+            <option value="staff">Staff</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn secondary" data-close="userModalBackdrop">Cancel</button>
+        <button type="submit" class="btn">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== RESET PASSWORD MODAL (admin only) ===================== -->
+<div class="modal-backdrop" id="resetPasswordModalBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Reset Password</h2>
+      <button class="close-x" data-close="resetPasswordModalBackdrop">&times;</button>
+    </div>
+    <p class="lede" style="margin-bottom:18px;">
+      Set a new password for <strong id="resetUserName"></strong>. This takes effect
+      immediately — be sure to share the new password with them through a secure channel.
+    </p>
+    <div class="error-msg" id="resetPasswordError"></div>
+    <form id="resetPasswordForm">
+      <input type="hidden" id="resetUserId">
+      <div class="form-grid">
+        <div class="field">
+          <label>New Password</label>
+          <input type="password" id="rp_newPassword" minlength="6" required>
+        </div>
+        <div class="field">
+          <label>Confirm New Password</label>
+          <input type="password" id="rp_confirmPassword" minlength="6" required>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn secondary" data-close="resetPasswordModalBackdrop">Cancel</button>
+        <button type="submit" class="btn">Reset Password</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

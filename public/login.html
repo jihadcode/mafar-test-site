@@ -1,0 +1,73 @@
+<!--
+  FILE MAP — login.html
+  Uses:  /css/login.css, /css/navbar.css  ← navbar.css is shared by every public page
+  JS:    inline <script> at the bottom (form logic)
+         /js/navbar.js  ← shared site header/navigation
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log In &middot; MAFAR-LDS Portal</title>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<div id="site-header"></div>
+<script src="/js/navbar.js"></script>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <h1>Welcome back</h1>
+    <div class="sub">Log in to access the Client Registry and Programs dashboard.</div>
+
+    <div class="error-msg" id="errorMsg"></div>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="forgot-link"><a href="/forgot-password.html">Forgot your password?</a></div>
+      <button type="submit" class="btn" style="width:100%;">Log In</button>
+    </form>
+
+    <div class="switch">Don't have an account? <a href="/register.html">Create one</a></div>
+  </div>
+</div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  const errBox = document.getElementById('errorMsg');
+  errBox.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      errBox.textContent = data.error || 'Login failed.';
+      errBox.style.display = 'block';
+      return;
+    }
+    window.location.href = '/dashboard.html';
+  } catch (err) {
+    errBox.textContent = 'Could not reach the server. Please try again.';
+    errBox.style.display = 'block';
+  }
+});
+</script>
+
+</body>
+</html>

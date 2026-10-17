@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "SWARB Livelihood Kits Rollout",
+    "programId": 1,
+    "programName": "Support to Women ARBs (SWARB)",
+    "location": "Province-wide",
+    "budget": 2500000,
+    "beneficiaries": 320,
+    "startDate": "2026-02-01",
+    "endDate": "2026-11-30",
+    "status": "Ongoing"
+  },
+  {
+    "id": 2,
+    "name": "Rice Farmer Field School Batch 3",
+    "programId": 2,
+    "programName": "Farm Field School \u2013 Rice-Based Farming",
+    "location": "8 Municipalities",
+    "budget": 4200000,
+    "beneficiaries": 480,
+    "startDate": "2026-01-15",
+    "endDate": "2026-08-15",
+    "status": "Ongoing"
+  },
+  {
+    "id": 3,
+    "name": "PalayCheck Radio Segment Production",
+    "programId": 3,
+    "programName": "PalayCheck System \u2014 School on Air",
+    "location": "Province-wide (Radio)",
+    "budget": 850000,
+    "beneficiaries": 0,
+    "startDate": "2026-09-01",
+    "endDate": "2027-02-28",
+    "status": "Planning"
+  }
+]

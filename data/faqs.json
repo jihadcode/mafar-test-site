@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "question": "Who can register as a client in the MAFAR-LDS registry?",
+    "answer": "Farmers, fisherfolk, and agrarian reform beneficiaries (ARBs) residing or operating within Lanao del Sur can be registered by MAFAR-LDS staff. If you believe you should be included in the registry, visit your local Municipal Agriculture Office or the MAFAR-LDS provincial office.",
+    "status": "Published"
+  },
+  {
+    "id": 2,
+    "question": "How do I create a staff account on this portal?",
+    "answer": "Staff accounts are created through the \"Create a Staff Account\" link on the homepage. For security, only authorized MAFAR-LDS personnel should register accounts, since the first account created becomes an administrator.",
+    "status": "Published"
+  },
+  {
+    "id": 3,
+    "question": "I forgot my password. What do I do?",
+    "answer": "Use the \"Forgot your password?\" link on the Log In page. If email delivery hasn't been set up yet on this installation, ask your system administrator to reset your password directly from the Manage Users section of the dashboard.",
+    "status": "Published"
+  },
+  {
+    "id": 4,
+    "question": "Where can I find MAFAR's official forms, like the RSBSA form?",
+    "answer": "Official forms and application documents are listed on the Downloads page, accessible from the main navigation menu.",
+    "status": "Published"
+  }
+]

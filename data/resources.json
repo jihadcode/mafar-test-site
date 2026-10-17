@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Registry System for Basic Sectors in Agriculture (RSBSA) Form",
+    "description": "Application form for farmers, fisherfolk, and farmworkers to register under the national RSBSA system.",
+    "section": "Downloads",
+    "category": "Forms",
+    "fileUrl": "",
+    "date": "2026-01-15",
+    "status": "Published"
+  },
+  {
+    "id": 2,
+    "title": "MAFARamadhan 2024 Application Form",
+    "description": "Application form for beneficiaries of the MAFARamadhan assistance program.",
+    "section": "Downloads",
+    "category": "Application Forms",
+    "fileUrl": "",
+    "date": "2024-03-01",
+    "status": "Published"
+  },
+  {
+    "id": 3,
+    "title": "Memorandum Order No. 2026-01",
+    "description": "Sample memorandum order entry. Replace with real issuances via Dashboard \u2192 Issuances & Downloads.",
+    "section": "Issuances",
+    "category": "Memorandum Orders",
+    "fileUrl": "",
+    "date": "2026-01-10",
+    "status": "Published"
+  },
+  {
+    "id": 4,
+    "title": "Administrative Order No. 2026-01",
+    "description": "Sample administrative order entry. Replace with real issuances via Dashboard \u2192 Issuances & Downloads.",
+    "section": "Issuances",
+    "category": "Administrative Orders",
+    "fileUrl": "",
+    "date": "2026-01-05",
+    "status": "Published"
+  }
+]

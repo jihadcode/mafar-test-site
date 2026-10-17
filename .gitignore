@@ -1,0 +1,9 @@
+# Never commit real secrets — copy .env.example to .env instead.
+.env
+
+# Installed packages are recreated by `npm install`; no need to commit them.
+node_modules/
+
+# Editor/OS clutter
+.DS_Store
+*.log

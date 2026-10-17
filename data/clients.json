@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Amina Macarambon",
+    "type": "Farmer",
+    "sex": "Female",
+    "municipality": "Ganassi",
+    "barangay": "Poblacion",
+    "keyDetail": "Rice, 1.5 ha \u00b7 Owner-cultivator",
+    "contact": "09171234567"
+  },
+  {
+    "id": 2,
+    "name": "Hadji Sarip Dimaampao",
+    "type": "Farmer",
+    "sex": "Male",
+    "municipality": "Masiu",
+    "barangay": "Bubonga Marawi",
+    "keyDetail": "Corn, 2.0 ha \u00b7 Tenant",
+    "contact": "09182223344"
+  },
+  {
+    "id": 3,
+    "name": "Bailan Panondiongan",
+    "type": "Fisherfolk",
+    "sex": "Female",
+    "municipality": "Marantao",
+    "barangay": "Lakeshore",
+    "keyDetail": "Lake Lanao \u00b7 Non-motorized banca",
+    "contact": "09193334455"
+  },
+  {
+    "id": 4,
+    "name": "Omar Balt",
+    "type": "Fisherfolk",
+    "sex": "Male",
+    "municipality": "Bacolod-Kalawi",
+    "barangay": "Poblacion",
+    "keyDetail": "Lake Lanao \u00b7 Motorized banca",
+    "contact": "09154445566"
+  },
+  {
+    "id": 5,
+    "name": "Norhanifa Alonto",
+    "type": "ARB",
+    "sex": "Female",
+    "municipality": "Taraka",
+    "barangay": "Cadayonan",
+    "keyDetail": "CLOA-045821 \u00b7 2.0 ha",
+    "contact": "09175556677"
+  },
+  {
+    "id": 6,
+    "name": "Sultan Dianalan Batua",
+    "type": "ARB",
+    "sex": "Male",
+    "municipality": "Wao",
+    "barangay": "Poblacion",
+    "keyDetail": "CLOA-039217 \u00b7 1.8 ha",
+    "contact": "09186667788"
+  }
+]

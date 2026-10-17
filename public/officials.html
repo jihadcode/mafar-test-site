@@ -1,0 +1,159 @@
+<!--
+  FILE MAP — officials.html
+  Uses:  /css/officials.css, /css/navbar.css  ← navbar.css is shared by every public page
+  JS:    /js/officials.js  ← switches between the tabs below
+         /js/navbar.js     ← shared site header/navigation
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Officials &middot; MAFAR-LDS Portal</title>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/officials.css">
+</head>
+<body>
+<div id="site-header"></div>
+<script src="/js/navbar.js"></script>
+
+<div class="officials-header">
+  <h1>MAFAR &amp; Bangsamoro Officials</h1>
+  <p class="lede">A quick reference for MAFAR and regional leadership. Because BARMM
+     is currently in a transition period ahead of its first regular parliamentary election,
+     please treat this page as a general reference and confirm current details on the
+     official Bangsamoro Government website linked at the bottom of each section.</p>
+</div>
+
+<div class="officials-tabs">
+  <button class="tab-btn active" data-tab="minister">Minister's Corner</button>
+  <button class="tab-btn" data-tab="regional-officials">Regional Officials</button>
+  <button class="tab-btn" data-tab="directory">Directory of Officials</button>
+  <button class="tab-btn" data-tab="chief-minister">Chief Minister</button>
+  <button class="tab-btn" data-tab="key-officials">Bangsamoro Key Officials</button>
+  <button class="tab-btn" data-tab="parliament">Members of Parliament</button>
+</div>
+
+<div class="officials-content">
+
+  <!-- ===================== MINISTER'S CORNER (MAFAR) ===================== -->
+  <section id="minister" class="tab-panel active">
+    <div class="official-card">
+      <div class="official-name">Abunawas Maslamama</div>
+      <div class="official-title">Minister, Ministry of Agriculture, Fisheries, and Agrarian Reform (MAFAR)</div>
+      <p>Minister Maslamama leads MAFAR's work supporting Bangsamoro farmers, fisherfolk, and
+         agrarian reform beneficiaries, including sustainable agribusiness, fisheries
+         development, and inclusive market-access initiatives across the region. He succeeded
+         Mohammad Yacob, who moved on to become BARMM Senior Minister and later Speaker of the
+         Bangsamoro Parliament.</p>
+    </div>
+    <p class="source-note">For the ministry's latest news and the Minister's official
+       messages, see the official
+       <a href="https://mafar.bangsamoro.gov.ph/" target="_blank" rel="noopener">MAFAR website</a>.</p>
+  </section>
+
+  <!-- ===================== REGIONAL OFFICIALS ===================== -->
+  <section id="regional-officials" class="tab-panel">
+    <div class="official-card">
+      <div class="official-name">Provincial &amp; Field Coordination</div>
+      <div class="official-title">Illustrative structure</div>
+      <p>MAFAR delivers services through provincial and field offices across BARMM's
+         provinces &mdash; including MAFAR-Lanao del Sur, which this portal supports. Each
+         provincial office typically coordinates agriculture, fisheries, and agrarian reform
+         services for its area with MAFAR's central office.</p>
+    </div>
+    <p class="source-note">This portal's own staff directory (next tab) reflects MAFAR-LDS's
+       actual registered personnel. For a full region-wide list of provincial officials,
+       see the official <a href="https://mafar.bangsamoro.gov.ph/" target="_blank" rel="noopener">MAFAR website</a>.</p>
+  </section>
+
+  <!-- ===================== DIRECTORY OF OFFICIALS (live data) ===================== -->
+  <section id="directory" class="tab-panel">
+    <div id="directoryList">
+      <p class="lede">Loading staff directory&hellip;</p>
+    </div>
+    <p class="source-note">This directory lists MAFAR-LDS staff accounts registered on this
+       portal, pulled live &mdash; not a static list. New staff automatically appear here once
+       an administrator sets up their account.</p>
+  </section>
+
+  <!-- ===================== CHIEF MINISTER (BARMM-wide) ===================== -->
+  <section id="chief-minister" class="tab-panel">
+    <div class="official-card">
+      <div class="official-name">Abdulraof "Sammy Gambar" Macacua</div>
+      <div class="official-title">Interim Chief Minister, Bangsamoro Autonomous Region in Muslim Mindanao</div>
+      <p>Macacua leads the Bangsamoro Transition Authority, the interim regional government,
+         after being appointed to the post following the resignation of the previous Chief
+         Minister, Ahod "Al Haj Murad" Ebrahim. As Chief Minister, he heads the regional
+         Cabinet and presented the Bangsamoro Government's 2026 regional budget proposal to
+         the Bangsamoro Parliament.</p>
+    </div>
+    <div class="official-card">
+      <div class="official-name">Hatimil E. Hassan</div>
+      <div class="official-title">Deputy Chief Minister &ndash; Island Provinces</div>
+      <p>Assists the Chief Minister with governance and coordination for BARMM's island
+         provinces (Basilan, Sulu, and Tawi-Tawi).</p>
+    </div>
+    <p class="source-note">This office is currently held on an interim basis. For the latest,
+       see the official
+       <a href="https://bangsamoro.gov.ph/cm/" target="_blank" rel="noopener">Chief Minister's Corner</a>.</p>
+  </section>
+
+  <!-- ===================== KEY OFFICIALS (BARMM-wide) ===================== -->
+  <section id="key-officials" class="tab-panel">
+    <div class="official-card">
+      <div class="official-name">Mohammad Yacob</div>
+      <div class="official-title">Speaker, Bangsamoro Parliament</div>
+    </div>
+    <div class="official-card">
+      <div class="official-name">Baintan Ampatuan</div>
+      <div class="official-title">Deputy Speaker, Bangsamoro Parliament</div>
+    </div>
+    <div class="official-card">
+      <div class="official-name">Naguib Sinarimbo</div>
+      <div class="official-title">Member of Parliament &middot; former Minister of the Interior and Local Government</div>
+    </div>
+    <div class="official-card">
+      <div class="official-name">Muslimin Sema</div>
+      <div class="official-title">Minister, Ministry of Labor and Employment</div>
+    </div>
+    <div class="official-card">
+      <div class="official-name">Kadil Sinolinding Jr.</div>
+      <div class="official-title">Member of Parliament &middot; concurrently overseeing the Ministry of Health</div>
+    </div>
+    <p class="source-note">Ministries and their current officials change from time to time.
+       For the complete, current directory, see the official
+       <a href="https://bangsamoro.gov.ph/officials/key-officials/" target="_blank" rel="noopener">BARMM Key Officials</a> page.</p>
+  </section>
+
+  <!-- ===================== MEMBERS OF PARLIAMENT (BARMM-wide) ===================== -->
+  <section id="parliament" class="tab-panel">
+    <div class="official-card">
+      <div class="official-name">The Bangsamoro Transition Authority Parliament</div>
+      <div class="official-title">80 interim members, presidentially appointed</div>
+      <p>Until the region's first regular parliamentary election, the Bangsamoro Transition
+         Authority exercises legislative power through an 80-member interim Parliament. Its
+         members are currently appointed rather than elected.</p>
+    </div>
+    <div class="official-card">
+      <div class="official-name">First Regular Parliamentary Election</div>
+      <div class="official-title">Scheduled for September 2026</div>
+      <p>Under Republic Act No. 12317, BARMM's first regular parliamentary election has been
+         set for the second Monday of September 2026. Once elected, the 80-seat Parliament
+         will be composed of 50% regional political party representatives, 40% district
+         representatives, and 10% sectoral representatives, serving until June 30, 2031.</p>
+    </div>
+    <p class="source-note">Because membership will change with the 2026 election, this page
+       does not list individual MPs. For the current roster, see the official
+       <a href="https://bangsamoro.gov.ph/officials/" target="_blank" rel="noopener">BARMM Officials</a> directory.</p>
+  </section>
+
+</div>
+
+<footer class="simple-footer">
+  &copy; 2026 MAFAR&#8209;LDS Portal &middot; Officials information last checked mid-2026 &middot; See linked official pages for the most current details
+</footer>
+
+<script src="/js/officials.js"></script>
+</body>
+</html>

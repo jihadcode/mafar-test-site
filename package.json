@@ -1,0 +1,20 @@
+{
+  "name": "mafar-lds-portal",
+  "version": "1.0.0",
+  "description": "MAFAR-LDS Portal - public site + client registry & programs dashboard with login",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "bcryptjs": "^2.4.3",
+    "nodemailer": "^6.9.14",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

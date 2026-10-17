@@ -1,0 +1,79 @@
+<!--
+  FILE MAP — transparency.html
+  Uses:  /css/transparency.css, /css/navbar.css  ← navbar.css is shared by every public page
+  JS:    /js/transparency.js  ← tab switching + loads Procurement/Vacant Position lists
+         /js/navbar.js        ← shared site header/navigation
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transparency &middot; MAFAR-LDS Portal</title>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/transparency.css">
+</head>
+<body>
+<div id="site-header"></div>
+<script src="/js/navbar.js"></script>
+
+<div class="page-header-block">
+  <h1>Transparency</h1>
+  <p class="lede">Standard government transparency and accountability information.</p>
+</div>
+
+<div class="transparency-tabs">
+  <button class="tab-btn active" data-tab="seal">Transparency Seal</button>
+  <button class="tab-btn" data-tab="charter">Citizen's Charter</button>
+  <button class="tab-btn" data-tab="procurement">Procurement</button>
+  <button class="tab-btn" data-tab="vacant">Vacant Position</button>
+</div>
+
+<div class="transparency-content">
+
+  <section id="seal" class="tab-panel active">
+    <div class="info-card">
+      <h2>Transparency Seal</h2>
+      <p>The Transparency Seal is a standard requirement under the annual General
+         Appropriations Act (GAA), requiring national government agencies (and, by
+         extension, similar bodies) to make key information publicly accessible on their
+         websites — including their mandate, officials, budget, and annual procurement plan.</p>
+      <p class="section-note">This installation's Transparency Seal documents are not yet
+         uploaded. MAFAR-LDS staff can add them via Dashboard &rarr; Issuances &amp; Downloads
+         once available.</p>
+    </div>
+  </section>
+
+  <section id="charter" class="tab-panel">
+    <div class="info-card">
+      <h2>Citizen's Charter</h2>
+      <p>A Citizen's Charter is a public document, required under the Ease of Doing Business
+         and Efficient Government Service Delivery Act (Republic Act No. 11032), that lists an
+         office's frontline services, requirements, fees, and the maximum processing time for
+         each — so the public knows exactly what to expect when transacting with a government
+         office.</p>
+      <p class="section-note">MAFAR-LDS's specific Citizen's Charter (e.g. registry
+         application processing times) is not yet published here. Contact the office directly
+         in the meantime — see <a href="/contact.html">Contact Us</a>.</p>
+    </div>
+  </section>
+
+  <section id="procurement" class="tab-panel">
+    <h2>Procurement</h2>
+    <div id="procurementList"><p class="lede">Loading&hellip;</p></div>
+  </section>
+
+  <section id="vacant" class="tab-panel">
+    <h2>Vacant Position</h2>
+    <div id="vacantList"><p class="lede">Loading&hellip;</p></div>
+  </section>
+
+</div>
+
+<footer class="simple-footer">
+  &copy; 2026 MAFAR&#8209;LDS Portal &middot; Internal registry system &middot; Built for demonstration purposes
+</footer>
+
+<script src="/js/transparency.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+/* about.css — used ONLY by public/about.html
+   Theme: colors are drawn from the official BARMM flag/seal — green
+   (Islamic teachings & principles), golden-yellow crescent & star
+   (bright future), white (peace). */
+
+:root {
+  --cream: #f7f4ec;
+  --panel: #ffffff;
+  --ink: #24291f;
+  --muted: #6d7266;
+  --border: #e2e6d8;
+  --brand-green: #14532d;
+  --brand-green-dark: #0d3a1f;
+  --brand-green-tint: #e8f0e5;
+  --gold: #c9971f;
+  --gold-dark: #a97c17;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, .serif {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+/* ---------- Page header ---------- */
+.page-header-block {
+  padding: 56px 32px 32px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--brand-green-tint), var(--cream));
+  border-bottom: 3px solid var(--gold);
+}
+.page-header-block h1 { font-size: 2rem; color: var(--brand-green-dark); }
+.page-header-block .lede {
+  color: var(--muted);
+  max-width: 700px;
+  margin: 14px auto 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* ---------- About content ---------- */
+.about-content { max-width: 1000px; margin: 0 auto; padding: 44px 32px 60px; }
+
+.about-section { margin-bottom: 52px; scroll-margin-top: 100px; }
+.about-section h2 { font-size: 1.4rem; color: var(--brand-green-dark); margin-bottom: 10px; }
+.section-note { color: var(--muted); font-size: 0.85rem; font-style: italic; margin-bottom: 18px; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--brand-green);
+  border-radius: 12px;
+  padding: 22px;
+}
+.card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.card p { color: var(--muted); font-size: 0.92rem; line-height: 1.5; margin: 0; }
+
+/* ---------- Organizational structure chart ---------- */
+.org-chart { display: flex; flex-direction: column; align-items: center; }
+.org-box {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+}
+.org-top { background: var(--brand-green); color: #fff; border: none; }
+.org-connector { width: 2px; height: 24px; background: var(--border); }
+.org-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+.org-bottom { margin-top: 4px; color: var(--gold-dark); border-color: var(--gold); }
+
+/* ---------- Logo showcase ---------- */
+.logo-showcase {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 26px;
+}
+.logo-image { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.logo-showcase p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0; }
+
+/* ---------- Footer ---------- */
+.simple-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 32px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .page-header-block { padding: 36px 18px 24px; }
+  .page-header-block h1 { font-size: 1.5rem; }
+  .about-content { padding: 28px 18px 50px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .logo-showcase { flex-direction: column; text-align: center; }
+  .org-row { flex-direction: column; width: 100%; }
+}

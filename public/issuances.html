@@ -1,0 +1,40 @@
+<!--
+  FILE MAP — issuances.html
+  Uses:  /css/issuances.css, /css/navbar.css  ← navbar.css is shared by every public page
+  JS:    /js/issuances.js  ← tab switching + loads issuance lists
+         /js/navbar.js     ← shared site header/navigation
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Issuances &middot; MAFAR-LDS Portal</title>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/issuances.css">
+</head>
+<body>
+<div id="site-header"></div>
+<script src="/js/navbar.js"></script>
+
+<div class="page-header-block">
+  <h1>Issuances</h1>
+  <p class="lede">Memorandum orders and administrative orders issued by MAFAR-LDS.</p>
+</div>
+
+<div class="issuances-tabs">
+  <button class="tab-btn active" data-category="Memorandum Orders">Memorandum Orders</button>
+  <button class="tab-btn" data-category="Administrative Orders">Administrative Orders</button>
+</div>
+
+<div class="issuances-content">
+  <div id="issuancesList"><p class="lede">Loading&hellip;</p></div>
+</div>
+
+<footer class="simple-footer">
+  &copy; 2026 MAFAR&#8209;LDS Portal &middot; Internal registry system &middot; Built for demonstration purposes
+</footer>
+
+<script src="/js/issuances.js"></script>
+</body>
+</html>

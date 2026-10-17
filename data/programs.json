@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Support to Women ARBs (SWARB)",
+    "description": "Support program for women agrarian reform beneficiaries.",
+    "fundingSource": "GAD Fund",
+    "coverageArea": "Province-wide",
+    "linkedProjects": 1,
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "Farm Field School \u2013 Rice-Based Farming",
+    "description": "Farmer-field-school training on rice-based farming systems.",
+    "fundingSource": "National Budget",
+    "coverageArea": "8 Municipalities",
+    "linkedProjects": 1,
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "name": "PalayCheck System \u2014 School on Air",
+    "description": "Radio-based extension program teaching the PalayCheck rice production system.",
+    "fundingSource": "DA-BARMM Allocation",
+    "coverageArea": "Province-wide (Radio)",
+    "linkedProjects": 1,
+    "status": "Pending"
+  },
+  {
+    "id": 4,
+    "name": "Philippine Coffee Quality Competition 2026",
+    "description": "Regional coffee quality competition to promote coffee farmers.",
+    "fundingSource": "BARMM Special Fund",
+    "coverageArea": "Regional",
+    "linkedProjects": 0,
+    "status": "Active"
+  }
+]

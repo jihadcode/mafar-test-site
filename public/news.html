@@ -1,0 +1,47 @@
+<!--
+  FILE MAP — news.html
+  Uses:  /css/news.css, /css/navbar.css  ← navbar.css is shared by every public page
+  JS:    /js/news.js  ← loads and filters the News tabs/cards
+         /js/navbar.js ← shared site header/navigation
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News &middot; MAFAR-LDS Portal</title>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/news.css">
+</head>
+<body>
+<div id="site-header"></div>
+<script src="/js/navbar.js"></script>
+
+<div class="page-header-block">
+  <h1>News</h1>
+  <p class="lede">Regional and provincial news, and updates on national programs implemented
+     in the Bangsamoro through MAFAR.</p>
+</div>
+
+<div class="news-page-content">
+  <div class="news-tabs" id="newsTabs">
+    <button class="news-tab active" data-category="Regional">Regional</button>
+    <button class="news-tab" data-category="Provincial">Provincial</button>
+    <button class="news-tab" data-category="Philippine Rural Development Project">Philippine Rural Development Project</button>
+    <button class="news-tab" data-category="Mindanao Inclusive Agriculture Development Project">Mindanao Inclusive Agriculture Development Project</button>
+    <button class="news-tab" data-category="Special Development Fund">Special Development Fund</button>
+    <button class="news-tab" data-category="Bangsamoro Agriculture and Fisheries Training Institute">Bangsamoro Agriculture and Fisheries Training Institute</button>
+  </div>
+
+  <div class="news-grid" id="newsGrid">
+    <p class="lede">Loading news&hellip;</p>
+  </div>
+</div>
+
+<footer class="simple-footer">
+  &copy; 2026 MAFAR&#8209;LDS Portal &middot; Internal registry system &middot; Built for demonstration purposes
+</footer>
+
+<script src="/js/news.js"></script>
+</body>
+</html>

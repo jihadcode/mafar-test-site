@@ -1,0 +1,50 @@
+<!--
+  FILE MAP — knowledge-corner.html
+  Uses:  /css/knowledge-corner.css, /css/navbar.css  ← navbar.css is shared by every public page
+  JS:    /js/knowledge-corner.js  ← loads and filters the 10 Knowledge Corner tabs/cards
+         /js/navbar.js            ← shared site header/navigation
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Corner &middot; MAFAR-LDS Portal</title>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/knowledge-corner.css">
+</head>
+<body>
+<div id="site-header"></div>
+<script src="/js/navbar.js"></script>
+
+<div class="page-header-block">
+  <h1>Knowledge Corner</h1>
+  <p class="lede">Announcements, updates, and media from MAFAR-LDS.</p>
+</div>
+
+<div class="kc-content">
+  <div class="news-tabs" id="newsTabs">
+    <button class="news-tab" data-category="Pull Quotes">Pull Quotes</button>
+    <button class="news-tab active" data-category="Updates">Updates</button>
+    <button class="news-tab" data-category="InfoGraphic Videos">InfoGraphic Videos</button>
+    <button class="news-tab" data-category="Trivia">Trivia</button>
+    <button class="news-tab" data-category="Audio-Video Presentation">Audio-Video Presentation</button>
+    <button class="news-tab" data-category="Radio Program">Radio Program</button>
+    <button class="news-tab" data-category="Publications">Publications</button>
+    <button class="news-tab" data-category="IEC Materials">IEC Materials</button>
+    <button class="news-tab" data-category="Annual Reports">Annual Reports</button>
+    <button class="news-tab" data-category="Project Papers">Project Papers</button>
+  </div>
+
+  <div class="news-grid" id="newsGrid">
+    <p class="lede">Loading&hellip;</p>
+  </div>
+</div>
+
+<footer class="simple-footer">
+  &copy; 2026 MAFAR&#8209;LDS Portal &middot; Internal registry system &middot; Built for demonstration purposes
+</footer>
+
+<script src="/js/knowledge-corner.js"></script>
+</body>
+</html>

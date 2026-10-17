@@ -1,0 +1,105 @@
+<!--
+  FILE MAP — contact.html
+  Uses:  /css/contact.css, /css/navbar.css  ← navbar.css is shared by every public page
+  JS:    inline <script> at the bottom (form logic)
+         /js/navbar.js  ← shared site header/navigation
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us &middot; MAFAR-LDS Portal</title>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/contact.css">
+</head>
+<body>
+<div id="site-header"></div>
+<script src="/js/navbar.js"></script>
+
+<div class="page-header-block">
+  <h1>Contact Us</h1>
+  <p class="lede">Send us a message and we'll get back to you.</p>
+</div>
+
+<div class="contact-content">
+  <div class="contact-grid">
+
+    <div class="contact-info-card">
+      <h2>MAFAR-LDS Office</h2>
+      <p><strong>Address:</strong> Provincial Capitol Complex, Marawi City, Lanao del Sur,
+         BARMM <span class="placeholder-tag">(placeholder — update with the real address)</span></p>
+      <p><strong>Email:</strong> <span class="placeholder-tag">(set CONTACT_EMAIL in .env)</span></p>
+      <p><strong>Office Hours:</strong> Monday&ndash;Friday, 8:00 AM&ndash;5:00 PM</p>
+    </div>
+
+    <div class="contact-form-card">
+      <div class="error-msg" id="errorMsg"></div>
+      <div class="success-msg" id="successMsg"></div>
+      <form id="contactForm">
+        <div class="field">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="field">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject">
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn" style="width:100%;">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<footer class="simple-footer">
+  &copy; 2026 MAFAR&#8209;LDS Portal &middot; Internal registry system &middot; Built for demonstration purposes
+</footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errBox = document.getElementById('errorMsg');
+  const okBox = document.getElementById('successMsg');
+  errBox.style.display = 'none';
+  okBox.style.display = 'none';
+
+  const payload = {
+    name: document.getElementById('name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    subject: document.getElementById('subject').value.trim(),
+    message: document.getElementById('message').value.trim()
+  };
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      errBox.textContent = data.error || 'Could not send your message.';
+      errBox.style.display = 'block';
+      return;
+    }
+    okBox.textContent = data.message;
+    okBox.style.display = 'block';
+    document.getElementById('contactForm').reset();
+  } catch (err) {
+    errBox.textContent = 'Could not reach the server. Please try again.';
+    errBox.style.display = 'block';
+  }
+});
+</script>
+
+</body>
+</html>

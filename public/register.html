@@ -1,0 +1,87 @@
+<!--
+  FILE MAP — register.html
+  Uses:  /css/register.css, /css/navbar.css  ← navbar.css is shared by every public page
+  JS:    inline <script> at the bottom (form logic)
+         /js/navbar.js  ← shared site header/navigation
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account &middot; MAFAR-LDS Portal</title>
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+<div id="site-header"></div>
+<script src="/js/navbar.js"></script>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <h1>Create a staff account</h1>
+    <div class="sub">The very first account created becomes the admin account.</div>
+
+    <div class="error-msg" id="errorMsg"></div>
+
+    <form id="registerForm">
+      <div class="field">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" required>
+      </div>
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="field">
+        <label for="position">Position / Job Title</label>
+        <input type="text" id="position" name="position" placeholder="e.g. Information Officer I">
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" minlength="6" required>
+      </div>
+      <button type="submit" class="btn" style="width:100%;">Create Account</button>
+    </form>
+
+    <div class="switch">Already have an account? <a href="/login.html">Log in</a></div>
+  </div>
+</div>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fullName = document.getElementById('fullName').value.trim();
+  const username = document.getElementById('username').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const position = document.getElementById('position').value.trim();
+  const password = document.getElementById('password').value;
+  const errBox = document.getElementById('errorMsg');
+  errBox.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fullName, username, email, password, position })
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      errBox.textContent = data.error || 'Registration failed.';
+      errBox.style.display = 'block';
+      return;
+    }
+    window.location.href = '/dashboard.html';
+  } catch (err) {
+    errBox.textContent = 'Could not reach the server. Please try again.';
+    errBox.style.display = 'block';
+  }
+});
+</script>
+
+</body>
+</html>

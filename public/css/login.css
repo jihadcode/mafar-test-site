@@ -1,0 +1,151 @@
+/* login.css — used ONLY by public/login.html
+   Theme: colors are drawn from the official BARMM flag/seal — green
+   (Islamic teachings & principles), golden-yellow crescent & star
+   (bright future), white (peace), red (used sparingly, for error messages). */
+
+:root {
+  --cream: #f7f4ec;
+  --panel: #ffffff;
+  --ink: #24291f;
+  --muted: #6d7266;
+  --border: #e2e6d8;
+  --brand-green: #14532d;
+  --brand-green-dark: #0d3a1f;
+  --gold: #c9971f;
+  --gold-dark: #a97c17;
+  --brand-red: #8c2b28;
+  --brand-red-tint: #fbeae9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, .serif {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+/* ---------- Top navigation ---------- */
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.topnav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+}
+.topnav .brand .seal {
+  width: 34px; height: 34px; border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+.topnav nav a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+.topnav nav a:hover { color: var(--brand-green); }
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: var(--brand-green);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.btn:hover { background: var(--brand-green-dark); }
+
+/* ---------- Login form ---------- */
+.auth-wrap {
+  min-height: calc(100vh - 68px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.auth-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+}
+.auth-card h1 { font-size: 1.5rem; margin-bottom: 6px; }
+.auth-card .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 26px; }
+.field { margin-bottom: 16px; }
+.field label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.field input {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fbfaf7;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #fff;
+}
+.error-msg {
+  background: var(--brand-red-tint);
+  color: var(--brand-red);
+  border: 1px solid #eecccb;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 16px;
+  display: none;
+}
+.auth-card .switch { margin-top: 18px; font-size: 0.88rem; color: var(--muted); text-align: center; }
+.auth-card .switch a { color: var(--gold-dark); font-weight: 600; text-decoration: none; }
+.forgot-link { text-align: right; margin: -8px 0 16px; }
+.forgot-link a { color: var(--gold-dark); font-size: 0.85rem; text-decoration: none; }
+.forgot-link a:hover { text-decoration: underline; }
+
+/* ---------- Brand ribbon (green accent bar at the very top of every page) ---------- */
+.brand-ribbon {
+  height: 5px;
+  width: 100%;
+  background: var(--brand-green);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+  .topnav { padding: 12px 18px; }
+  .topnav .brand { font-size: 1rem; }
+  .auth-wrap { padding: 24px 14px; }
+  .auth-card { padding: 28px 22px; }
+}
